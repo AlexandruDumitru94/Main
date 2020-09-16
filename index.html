@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,height=device-height initial-scale=1.0, maximum-scale=1">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 94vh;
+            width: 100vw;
+            overflow: hidden;
+        }
+
+        label, input, textarea {
+            display:block;
+        }
+
+        #contact {
+            background-image: url(images/form_backg.jpg);
+            height: 75%;
+            width: 95%;
+        }
+
+        #final-words {
+            text-align: center;
+            
+        }
+
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    
+    <form id="contact" action="https://formspree.io/alexandru.dumitru94.portfolio@gmail.com" method="POST">
+        <p class="form-header">You can use this form to contact me regarding full-time and freelance working opportunities.<br>
+        I also highly appreciate feedback.</p>
+        
+        
+            <input type="email" name="email" class="email" placeholder="E-mail" />
+        
+
+        
+            <input type="text" name="subject" class="subject" placeholder="Subject"/>
+        
+            <input type="text" name="name" class="name" placeholder="Name"/>
+        
+            <textarea class="message" name="message" placeholder="Message"></textarea>
+        
+
+        <div class="status">
+
+        </div>
+
+        <button type="submit" class="submit">Send</button>
+    </form>
+ 
+    <h1 id="final-words">I enjoy turning ideas into reality.<br>Tell me yours.</h1>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.submit').click(function (event) {
+                
+                console.log('Clicked Button')
+
+                var email = $('.email').val()
+                var subject = $('.subject').val()
+                var message = $('.message').val()
+                var statusElm = $('.status')
+                statusElm.empty()
+
+                if(email.length > 5 && email.includes('@') && email.includes('.')) {
+                    statusElm.append('<div>Email is valid</div>')
+                } else {
+                    event.preventDefault()
+                    statusElm.append('<div>Email is not valid</div>')
+                }
+
+                if(subject.length >= 2) {
+                    statusElm.append('<div>Subject is valid</div>')
+                } else {
+                    event.preventDefault()
+                    statusElm.append('<div>Subject is not valid</div>')
+                
+                }
+
+                if(message.length >= 10) {
+                    statusElm.append('<div>Message is valid</div>')
+                } else {
+                    event.preventDefault()
+                    statusElm.append('<div>Message is not valid</div>')
+                }
+            })
+        })
+    </script>
+
+</body>
+</html>
