@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,height=device-height initial-scale=1.0, maximum-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alata">
     <style>
         *, *::before, *::after {
             margin: 0;
@@ -10,24 +11,111 @@
             box-sizing: border-box;
         }
 
+        html {
+            
+            font-family: 'Alata';
+            
+        }
+
         body{
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: space-evenly;
             align-items: center;
             height: calc(var(--vh, 1vh) * 100);
             width: 100vw;
             overflow: hidden;
         }
 
-        label, input, textarea {
-            display:block;
+        
+
+        ul {
+            padding: 0;
+            margin: 0;
         }
 
+        ul li {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            margin-bottom: 10px;
+            overflow: hidden;
+            display: block;
+            clear: both;
+        }
+
+        input, textarea {
+            width: 100%;
+            border: 0;
+            background:#585858 ;
+            height: 40px;
+            font-size: 16px;
+            color: #f3f3f3;
+            box-sizing: border-box;
+        }
+
+        input:focus, textarea:focus{
+            outline: none;
+            border-bottom: 1px solid white;
+        }
+
+        input{
+            padding: 0 10px;
+        }
+        
+        textarea{
+            padding: 10px;
+            min-height: 80px;
+        }
+
+        .half-input {
+            width: 100%;
+            margin-left: 0%;
+            float: left;
+            clear: none;
+        }
+
+        .half-input:first-child {
+            margin-left: 0;
+        }
+/*
+        .full-input {
+            width: 100%;
+        }
+*/
+        ::placeholder{
+            color: rgb(218, 218, 218);
+        }
+
+        
+
         #contact {
-            background-image: url(images/formbackg.jpg);
-            height: 75%;
+            background-image: linear-gradient(90deg,  rgb(71, 71, 71),rgb(44, 44, 44) );
+            background-size: cover;
+            height: 70%;
             width: 95%;
+            border-radius: 5px;
+            padding: 10px;
+            overflow: auto;
+        }
+
+        
+
+        .form-header {
+            margin: 5% 2%;
+            text-align: center;
+            color: #f0f0f0;
+        }
+
+        .submit{
+            float: right;
+            padding: 2px;
+            background-color: rgb(44, 44, 44);
+            color: white;
+            border: 1px solid white;
+            border-radius: 5px;
+            width: 20%;
+            height: 10%;
         }
 
         #final-words {
@@ -35,35 +123,81 @@
             
         }
 
+        @media screen and (max-width: 330px) {
+            .form-header {
+                font-size: 1em;
+                margin: 3% 1%;
+            }
+        }
+
+        @media screen and (min-width: 500px) {
+            .half-input{
+                width: 49%;
+                margin-left: 2%;
+            }
+        }
+
+        @media only screen and (orientation: portrait) and (min-width: 650px) {
+            #contact{
+                width: 70%;
+                height: 40%;
+            }
+        }
+
+        @media only screen and (orientation: portrait) and (min-height: 790px) {
+            #contact{
+                
+                height: 55%;
+            }
+        }
+
+        @media only screen and (orientation: landscape) {
+            #contact{
+                width: 70%;
+                height: 65%;
+            }
+        }
+
+        @media only screen and (orientation: landscape) and (max-width: 1200px) {
+            .submit{
+                height: 15%;
+            }
+        }
+
+        
+
+
     </style>
     <title>Document</title>
 </head>
 <body>
     
     <form id="contact" action="https://formspree.io/alexandru.dumitru94.portfolio@gmail.com" method="POST">
-        <p class="form-header">You can use this form to contact me regarding full-time and freelance working opportunities.<br>
-        I also highly appreciate feedback.</p>
+        <h3 class="form-header">You can use this form to contact me regarding full-time and freelance working opportunities.<br>
+        I also highly appreciate feedback.</h3>
         
-        
-            <input type="email" name="email" class="email" placeholder="E-mail" />
-        
+        <ul>
+            <li class="half-input">
+                <input type="text" name="name" class="name" placeholder="Name" autocomplete="off"/>
+            </li>
 
-        
-            <input type="text" name="subject" class="subject" placeholder="Subject"/>
-        
-            <input type="text" name="name" class="name" placeholder="Name"/>
-        
-            <textarea class="message" name="message" placeholder="Message"></textarea>
-        
+            <li class="half-input">
+                <input type="email" name="email" class="name" placeholder="E-mail" autocomplete="off"/>
+            </li>
 
-        <div class="status">
-
-        </div>
+            <li class="full-input">
+                <input type="text" name="subject" class="subject" placeholder="Subject"/>
+            </li>
+                
+            <li class="full-input">
+                <textarea class="message" name="message" placeholder="Message" rows="4"></textarea>
+            </li>
+        </ul>
 
         <button type="submit" class="submit">Send</button>
     </form>
  
-    <h1 id="final-words">I enjoy turning ideas into reality.<br>Tell me yours.</h1>
+    <h1 id="final-words">I enjoy turning ideas into reality. Tell me yours.</h1>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
     <script>
@@ -75,7 +209,7 @@
             let vh = window.innerHeight * 0.01;
             document.documentElement.style.setProperty('--vh', `${vh}px`);
         });
-
+/*
         $(document).ready(function () {
             $('.submit').click(function (event) {
                 
@@ -99,7 +233,6 @@
                 } else {
                     event.preventDefault()
                     statusElm.append('<div>Subject is not valid</div>')
-                
                 }
 
                 if(message.length >= 10) {
@@ -108,8 +241,16 @@
                     event.preventDefault()
                     statusElm.append('<div>Message is not valid</div>')
                 }
+                
             })
         })
+*/
+
+
+        
+            
+
+
     </script>
 
 </body>
