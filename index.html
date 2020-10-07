@@ -2,94 +2,454 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,height=device-height initial-scale=1.0, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alata">
+    <link href='https://fonts.googleapis.com/css?family=Bilbo Swash Caps' rel='stylesheet'>
+    <link rel="stylesheet" href="node_modules/swiper/swiper-bundle.min.css">
+    <script src="https://kit.fontawesome.com/b08b446b66.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+    crossorigin="anonymous"></script>
+    <script src="jInvertScroll/dist/js/jquery.jInvertScroll.min.js"></script>
+    <script src="node_modules/swiper/swiper-bundle.min.js"></script>
     <style>
+        html {
+            scroll-behavior: smooth;
+            font-family: 'Alata';
+            height: calc(var(--vh, 1vh) * 100);
+        }
+
         *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        html {
-            
-            font-family: 'Alata';
-            
+        body {
+            overflow-x: hidden;
+            overflow-y: scroll;
         }
 
-        body{
-            display: flex;
-            flex-direction: column;
-            justify-content: space-evenly;
-            align-items: center;
-            height: calc(var(--vh, 1vh) * 100);
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scroll {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+        }
+
+            .background {
+                background-image: radial-gradient(circle, rgba(0,0,0,1) 15%,rgb(71, 71, 71)  ); 
+                height: calc(var(--vh, 1vh) * 100);
+                width: 500vw;
+                
+            }
+
+            .section {
+                pointer-events: none;
+                display: flex;
+                justify-content: space-between;
+                height: calc(var(--vh, 1vh) * 100);
+            }
+                .section--first {
+                    width: 500vw;
+                } 
+                .section--second {
+                    width: 600vw;
+                }
+                .section--third {
+                    width: 700vw;
+                }
+                .section--fourth {
+                    width: 800vw;
+                }
+
+
+        .page {
+            height: 100%;
             width: 100vw;
-            overflow: hidden;
+            position: relative;
         }
+            .page__section {
+                    position: absolute;
+                }
 
-        
-
-        ul {
-            padding: 0;
-            margin: 0;
-        }
-
-        ul li {
-            padding: 0;
-            margin: 0;
-            list-style: none;
-            margin-bottom: 10px;
-            overflow: hidden;
-            display: block;
-            clear: both;
-        }
-
-        input, textarea {
-            width: 100%;
-            border: 0;
-            background:#585858 ;
-            height: 40px;
-            font-size: 16px;
-            color: #f3f3f3;
-            box-sizing: border-box;
-        }
-
-        input:focus, textarea:focus{
-            outline: none;
-            border-bottom: 1px solid white;
-        }
-
-        input{
-            padding: 0 10px;
+        .center-transform {
+            transform: translate(-50%, -50%);
         }
         
-        textarea{
-            padding: 10px;
-            min-height: 80px;
-        }
-
-        .half-input {
+        .home-screen-bot {
+            height: 15vh;
             width: 100%;
-            margin-left: 0%;
-            float: left;
-            clear: none;
+            bottom: 6vh;
         }
-
-        .half-input:first-child {
-            margin-left: 0;
-        }
-/*
-        .full-input {
-            width: 100%;
-        }
-*/
-        ::placeholder{
-            color: rgb(218, 218, 218);
-        }
-
+            #welcome {
+                visibility: hidden;
+                font-size: 1.5em;
+                white-space: nowrap;
+                pointer-events: auto;
+                position: absolute;
+                color: rgba(255, 255, 255, 1);
+                left: 60%;
+                top: 50%;
+            }
         
+        .home-screen-main {
+            height: 56vh;
+            width: 100%;
+            top: 23vh;
+        }
+            #head-shot {
+                visibility: hidden;
+                transform: translate(-50%, 0);
+                position: absolute;
+                left: 50%;
+                height: 100%;
+                border-radius: 5%;
+            }
+
+        .home-screen-top {
+            height: 23vh;
+            width: 100%;
+            top: 0;
+        }
+            #greeting {
+                position: absolute;
+                left: 40%;
+                top: 50%;
+            }
+                .greeting__text {
+                    visibility: hidden;
+                    position: relative;
+                    font-size: 1em;
+                    white-space: nowrap;
+                    color: rgba(255, 255, 255, 1);
+                }
+
+        .photos-projects-main {
+            width: 100%;
+            height: 75vh;
+            bottom: 6vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+            .camera-wip {
+                height: auto;
+                max-width: 100%;
+                max-height: 100%;
+                width: auto;
+                position: absolute;
+                border-radius: 5%;
+            }
+
+            .camera-container {
+                position: relative;
+            }
+                #camera-swiper {
+                        position: absolute;
+                        left: 15%;
+                        bottom: 14.46%;
+                        pointer-events: auto;
+                        width: 51%;
+                        height: 47%;
+                }
+                    .camera-photo, .modal-photo {
+                        height: auto;
+                        max-width: 100%;
+                        max-height: 100%;
+                        width: auto;
+                    }
+
+        .photos-screen-modal {
+            display: none;
+            height: 100vh;
+            width: 100vw;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0,0,0,0.5);
+        }
+            #modal {
+                position: relative;
+                z-index: 1;
+                pointer-events: auto;
+                background-color: rgba(0,0,0,0.9);
+            }
+                .modal-close {
+                    position: absolute;
+                    top: 2%;
+                    right: 2%;
+                    color: #f1f1f1;
+                    font-size: 10vh;
+                    font-weight: bold;
+                    transition: 0.3s;
+                    z-index: 2;
+                } 
+
+                .modal-close:hover,
+                .modal-close:focus,
+                .planet-info-close:hover,
+                .planet-info-close:focus {
+                    color: #bbb;
+                    text-decoration: none;
+                    cursor: pointer;
+                }
+
+
+        .outer-sparkle, 
+        .inner-sparkle {
+            position: absolute;
+            height: auto;
+        }
+
+        #sparkle-one{
+            bottom: 5%;
+            left: 4%;
+            width: 10%;
+        }
+
+        #sparkle-two{
+            top: 5%;
+            left: 6%;
+            width: 10%;
+        }
+
+        #sparkle-three{
+            top: 5%;
+            right: 6%;
+            width: 10%;
+        }
+
+        #sparkle-four{
+            bottom: 5%;
+            right: 4%;
+            width: 10%;
+        }
+
+        #sparkle-five{
+            top: 22%;
+            right: 40%;
+            width: 3%;
+        }
+
+        #sparkle-six{
+            top: 25%;
+            left: 30%;
+            width: 4%;
+        }
+
+
+        .planet-container{
+            position: absolute;
+        }
+            .planet-info {
+                position: absolute;
+                white-space: nowrap;
+                z-index: 2;
+                background-color: rgba(0, 0, 0, 0.8);
+                box-shadow: inset 0 0 15px 10px rgb(104, 104, 104),
+                                    0 0 15px 2px rgb(104, 104, 104);
+                border-radius: 10px;
+                font-style: italic;
+                padding: 5px;
+                border: 1px solid white;
+                overflow: auto;
+                pointer-events: all;
+            }
+                .planet-title{
+                    text-align: center;
+                    margin-bottom: 2px;
+                    color:#e6e6ff;
+                }
+                .planet-list{
+                    list-style-position: inside;
+                }
+                    .planet-list > li {
+                        color:rgb(255, 255, 255);
+                        font-size: smaller;
+                    }
+
+            .planet {
+                width: auto;
+                position: absolute;
+                pointer-events: all;
+            }
+                .planet-info-close{
+                    pointer-events: all;
+                    position: absolute;
+                    right: 5%;
+                    top: 5%;
+                    color: #f1f1f1;
+                    font-weight: bold;
+                    z-index: 3;
+                }
+
+        .sun {
+            position: absolute;
+            transform: translate(-50%, +50%);
+            height: 25%;
+            width: auto;
+            left: 50%;
+            bottom: 50%;
+        }
+            
+        .container-jupiter {
+            height: 35%;
+            left: 10%;
+            top: 3%;
+        }
+            .info-jupiter {
+                max-height: 50%;
+                bottom: 48%;
+                visibility: hidden;
+            }
+            .jupiter {
+                height: 43%;
+                bottom: 0;
+            }
+
+        .container-saturn {
+            height: 35%;
+            right: 13%;
+            top: 1%;
+        }
+            .info-saturn {
+                right: 0;
+                bottom: 48%;
+                max-height: 50%;
+                visibility: hidden;
+            }
+            .saturn {
+                height: 43%;
+                bottom: 0;
+                right: 0;
+            }
+            
+        .container-uranus {
+            height: 28%;
+            left: 25%;
+            top: 7%;
+        }
+            .info-uranus {
+                top: 40%;
+                visibility: hidden;
+                max-height: 62.5%;
+            }
+            .uranus  {
+                height: 35%;
+            }
+
+        .container-neptune {
+            height: 28%;
+            right: 25%;
+            top: 2%;
+            
+        }
+            .info-neptune {
+                visibility: hidden;
+                top: 40%;
+                right: 0;
+                max-height: 62.5%;
+            }
+            .neptune  {
+                top: 0;
+                right: 0;
+                height: 35%;
+            }
+                            
+        .container-mercury {
+            height: 28%;
+            left: 35%;
+            bottom: 35%;
+        }
+            .info-mercury {
+                visibility: hidden;
+                bottom: 35%;
+                transform: translate(-20%, 0);
+                max-height: 62.5%;
+            }
+            .mercury {
+                height: 30%;
+                bottom: 0;
+            }
+
+        .container-venus {
+            height: 28%;
+            right: 28%;
+            bottom: 30%;
+        }
+            .info-venus {
+                visibility: hidden;
+                right: 0;
+                bottom: 35%;
+                max-height: 62.5%;
+            }
+            .venus {
+                height: 30%;
+                bottom: 0;
+                right: 0;
+            }
+
+        .container-earth {
+            height: 31%;
+            left: 20%;
+            bottom: 20%;
+        }
+            .info-earth {
+                visibility: hidden;
+                bottom: 40%;
+                max-height: 62.5%;
+            }
+            .earth {
+                height: 35%;
+                bottom: 0;
+            }
+        
+        .moon {
+            height: 2%;
+            left: 19%;
+            bottom: 19%;
+        }
+            
+        .container-mars {
+            height: 28%;
+            right: 23%;
+            bottom: 15%;
+        }
+            .info-mars {
+                visibility: hidden;
+                right: 0;
+                bottom: 38%;
+                max-height: 62.5%;
+            }
+            .mars {
+                height: 32%;
+                bottom: 0;
+                right: 0;
+            }   
+            
+        .photos-projects-top {
+            width: 100%;
+            height: 19vh;
+            top: 0;
+        }
+            .photos-projects-title {
+                font-size: 5vh;
+                position: absolute;
+                color: rgba(255, 255, 255, 1);
+                left: 50%;
+                top: 50%;
+                text-align: center;
+            }
 
         #contact {
+            display: none;
+            margin: 3% auto 1%;
+            pointer-events: all;
             background-image: linear-gradient(90deg,  rgb(71, 71, 71),rgb(44, 44, 44) );
             background-size: cover;
             height: 70%;
@@ -98,160 +458,1014 @@
             padding: 10px;
             overflow: auto;
         }
-
-        
-
-        .form-header {
-            margin: 5% 2%;
-            text-align: center;
-            color: #f0f0f0;
-        }
-
-        .submit{
-            float: right;
-            padding: 2px;
-            background-color: rgb(44, 44, 44);
-            color: white;
-            border: 1px solid white;
-            border-radius: 5px;
-            width: 20%;
-            height: 10%;
-        }
-
-        #final-words {
-            text-align: center;
-            
-
-            
-        }
-
-        @media screen and (max-width: 330px) {
             .form-header {
-                font-size: 1em;
-                margin: 3% 1%;
+                margin: 5% 2%;
+                text-align: center;
+                color: #f0f0f0;
             }
+
+            .form-list {
+                padding: 0;
+                margin: 0;
+            }
+                .form-list > li {
+                    padding: 0;
+                    list-style: none;
+                    margin-bottom: 10px;
+                    overflow: hidden;
+                    display: block;
+                    position: relative;
+                }
+        
+                input, textarea {
+                    width: 100%;
+                    border: 0;
+                    background:#585858 ;
+                    height: 40px;
+                    font-size: 16px;
+                    color: #f3f3f3;
+                    box-sizing: border-box;
+                }
+                input:focus, textarea:focus{
+                    outline: none;
+                    border-bottom: 1px solid white;
+                }
+
+                input{
+                    padding: 0 10px;
+                }
+                
+                textarea{
+                    padding: 10px;
+                    min-height: 80px;
+                }
+
+                .half-input {
+                    width: 100%;
+                    clear: none;
+                    float: left;
+                }
+
+                .full-input{
+                    clear: both;
+                }
+
+                .half-input:first-child {
+                    margin-left: 0;
+                }
+
+                ::placeholder{
+                    color: rgb(218, 218, 218);
+                }
+
+            .submit{
+                float: right;
+                padding: 2px;
+                background-color: rgb(44, 44, 44);
+                color: white;
+                border: 1px solid white;
+                border-radius: 5px;
+                width: 20%;
+                height: 10%;
+            }
+
+            .submit:hover{
+                background-color: rgba(153, 153, 153, 0.7);
+                color: black;
+                border: 1px solid black;
+            }
+
+        #icons-container{
+            pointer-events: all;
+            margin: 0 auto;
+            display: none;
+            justify-content: space-evenly;
+            align-items: center;
+            width: 40%;
+            padding: 5px;
+        }
+            .contact-icons{
+                font-size: 2em;
+                color: white;
+            }
+        
+        #final-words {
+            display: none;
+            position: absolute;
+            bottom: 6%;
+            padding: 0 5px;
+            width: 100%;
+            text-align: center;
+            pointer-events: all;
+            font-family: 'Bilbo Swash Caps';font-size: 30px;
+            color: #000000;
+            font-weight: bold;
         }
 
-        @media screen and (min-width: 500px) {
+        .main-footer {
+            position: fixed;
+            height: calc(var(--vh, 1vh) * 6);
+            width: 100%;
+            bottom: 0;
+            display: flex;
+            justify-content: center;
+        }
+            .nav{
+                background-color: rgba(0, 0, 0, 0.0);
+                color: rgb(255, 255, 255);
+                padding: 2px 7px;
+                border: none;
+                font-size: normal;
+            }
+            .nav:hover{
+                background-color: rgba(230, 230, 230, 0.2);
+            }
+            .nav:focus{
+                outline: none;
+            }
+
+            
+
+        .info-container{
+            pointer-events: none;
+            position: fixed;
+            bottom: 1%;
+            right: 1%;
+            margin-left: 20px;
+        }
+            .info{
+                visibility: hidden;
+                background-color: rgb(27, 27, 27);
+                border: 1px solid white;
+                border-radius: 5px;
+                padding: 5px;
+            }
+                .info-title{
+                    color: white;
+                }
+
+                .info-list{
+                    list-style-type: disc;
+                    list-style-position: inside;
+                }
+                    .info-item{
+                        color: white;
+                        font-size: small;
+                    }
+
+            .button-info {
+                pointer-events: all;
+                color: white;
+                float: right;
+                margin-top: 5px;
+            }
+
+            .button-info:hover{
+                cursor: pointer;
+            }
+
+            
+               
+    @media screen and (max-width: 330px) {
+        .form-header {
+            font-size: 1em;
+            margin: 3% 1%;
+        }
+
+        input, textarea {
+            height: 30px;
+        }
+    }
+
+    @media screen and (min-width: 500px) {
             .half-input{
                 width: 49%;
                 margin-left: 2%;
             }
-        }
-
-        @media only screen and (orientation: portrait) and (min-width: 650px) {
-            #contact{
-                width: 70%;
-                height: 40%;
+            .nav{
+                background-color: rgba(0, 0, 0, 0.0);
+                color: rgb(255, 255, 255);
+                padding: 2px 15px;
+                border: none;
+                font-size: larger;
             }
         }
 
-        @media only screen and (orientation: portrait) and (min-height: 790px) {
-            #contact{
-                
-                height: 55%;
+    @media screen and (min-width: 850px) {
+        #final-words{
+            font-family: 'Bilbo Swash Caps';font-size: 50px;
+        }
+    }
+
+    @media only screen and (orientation: portrait) and (max-aspect-ratio: 9/18) {
+            #welcome {
+                font-size: 1.8em;
+             }
+
+            .greeting__text {
+                font-size: 1.2em;
+            }
+                #greeting {
+                    left: 45%;
+                }
+    }
+
+    @media only screen and (orientation: portrait) and (min-width: 700px) {
+        #welcome {
+            font-size: 2.8em;
+            }
+
+        .greeting__text {
+            font-size: 2em;
+        }
+            #greeting {
+                left: 45%;
+            }
+
+        #contact{
+            width: 70%;
+            height: 40%;
+        }
+    }
+
+    @media only screen and (orientation: portrait) and (min-height: 790px) {
+        #contact{
+            height: 55%;
+            margin-top: 15%;
+        }
+
+        #final-words{
+            font-family: 'Bilbo Swash Caps';font-size: 45px;
+            bottom: 13%;
+        }
+    }
+
+    @media only screen and (orientation: landscape) {
+        #contact{
+            width: 70%;
+            height: 65%;
+        }
+    }
+
+    @media only screen and (orientation: landscape) and (max-width: 1200px) {
+
+        .home-screen-bot {
+            height: 44vh;
+            width: 50%;
+            right: 0;
+            bottom: 6vh;
+        }
+            #welcome {
+                font-size: 3vw;
+                white-space: nowrap;
+                pointer-events: auto;
+                position: absolute;
+                color: rgba(255, 255, 255, 1);
+                left: 50%;
+                top: 50%;
+            }
+            
+        .home-screen-main {
+            height: 100vh;
+            width: 50%;
+            left: 0;
+            top: 0;
+        }
+            #head-shot {
+                transform: none;
+                position: absolute;
+                left: 0;
+                height: 94%;
+                border-radius: 0%;
+            }
+
+        .home-screen-top {
+            height: 50vh;
+            width: 50%;
+            top: 0;
+            right: 0;
+        }
+            #greeting {
+                position: absolute;
+                left: 40%;
+                top: 50%;
+            }
+                .greeting__text {
+                    font-size: 5vw;
+                    white-space: nowrap;
+                    color: rgba(255, 255, 255, 1);
+                }
+
+        .submit{
+            height: 15%;
+        }
+
+    }
+
+    @media only screen and (orientation: landscape) and (min-width: 1201px) {
+
+        .home-screen-bot {
+            height: 44vh;
+            width: 50%;
+            right: 0;
+            bottom: 6vh;
+        }
+            #welcome {
+                font-size: 3vw;
+                white-space: nowrap;
+                pointer-events: auto;
+                position: absolute;
+                color: rgba(255, 255, 255, 1);
+                left: 50%;
+                top: 70%;
+            }
+            
+        .home-screen-main {
+            height: 100vh;
+            width: 50%;
+            left: 0;
+            top: 0;
+        }
+            #head-shot {
+                transform: none;
+                position: absolute;
+                left: 0;
+                height: 94%;
+                border-radius: 0%;
+            }
+
+        .home-screen-top {
+            height: 50vh;
+            width: 50%;
+            top: 0;
+            right: 0;
+        }
+            #greeting {
+                position: absolute;
+                left: 30%;
+                top: 50%;
+            }
+                .greeting__text {
+                    font-size: 4vw;
+                    white-space: nowrap;
+                    color: rgba(255, 255, 255, 1);
+                }
+    }
+
+    @media only screen and (orientation: landscape) and (max-aspect-ratio: 15/9) {
+
+        .home-screen-bot {
+            height: 44vh;
+            width: 50%;
+            right: 0;
+            bottom: 6vh;
+        }
+            #welcome {
+                font-size: 3.5vw;
+                white-space: nowrap;
+                pointer-events: auto;
+                position: absolute;
+                color: rgba(255, 255, 255, 1);
+                left: 58%;
+                top: 50%;
+            }
+
+        .home-screen-main {
+            height: 100vh;
+            width: 50%;
+            left: 0;
+            top: 0;
+        }
+            #head-shot {
+                transform: none;
+                position: absolute;
+                left: 0;
+                height: 94%;
+                border-radius: 0%;
+            }
+
+        .home-screen-top {
+            height: 50vh;
+            width: 50%;
+            top: 0;
+            right: 0;
+        }
+            #greeting {
+                position: absolute;
+                left: 55%;
+                top: 50%;
+            }
+                .greeting__text {
+                    font-size: 4vw;
+                    white-space: nowrap;
+                    color: rgba(255, 255, 255, 1);
+                }
+        }
+
+        @media only screen and (orientation: portrait) and (max-aspect-ratio: 9/14) {
+            #photo-text {
+                top: 80%;
             }
         }
 
-        @media only screen and (orientation: landscape) {
-            #contact{
-                width: 70%;
-                height: 65%;
-            }
+        @media only screen and (max-width: 1200px) {
+            body {
+                overflow-y: hidden;
         }
-
-        @media only screen and (orientation: landscape) and (max-width: 1200px) {
-            .submit{
-                height: 15%;
-            }
+            html{
+                overflow: hidden;
         }
-
-        
-
+}
 
     </style>
-    <title>Document</title>
 </head>
-<body>
-    
-    <form id="contact" action="https://formspree.io/alexandru.dumitru94.portfolio@gmail.com" method="POST">
-        <h3 class="form-header">You can use this form to contact me regarding full-time and freelance working opportunities.<br>
-        I also highly appreciate feedback.</h3>
-        
-        <ul>
-            <li class="half-input">
-                <input type="text" name="name" class="name" placeholder="Name" autocomplete="off"/>
-            </li>
 
-            <li class="half-input">
-                <input type="email" name="email" class="name" placeholder="E-mail" autocomplete="off"/>
-            </li>
+<body onresize="galleryDimensions()" onscroll="stopScroll()">
 
-            <li class="full-input">
-                <input type="text" name="subject" class="subject" placeholder="Subject"/>
-            </li>
-                
-            <li class="full-input">
-                <textarea class="message" name="message" placeholder="Message" rows="4"></textarea>
-            </li>
-        </ul>
+    <section class="scroll background" ></section>
 
-        <button type="submit" class="submit">Send</button>
-    </form>
- 
-    <h1 id="final-words">I enjoy turning ideas into reality. Tell me yours.</h1>
+    <section class="scroll section section--first">
+        <div class="page">
+            <main class="page__section home-screen-bot" >
+                <p class="center-transform" id="welcome">Welcome to my Web</p>
+            </main>
+        </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
-    <script>
+        <div class="page">
+            <div class="page__section photos-projects-main">
+                <img class="camera-wip" src="images/camera2.png" alt="Photo Camera" 
+                    width="3145" height="4318">
 
-        let vh = window.innerHeight * 0.01;
-        document.documentElement.style.setProperty('--vh', `${vh}px`);
+                <div class="camera-container">
+                    <div class="swiper-container" id="camera-swiper">
+                        <div class="swiper-wrapper" id="camera-wrapper">
+                            <img src="images/mtnhouse.jpg" class="swiper-slide camera-photo">
+                            <img src="images/statue.jpg" class="swiper-slide camera-photo">
+                            <img src="images/lake.jpg" class="swiper-slide camera-photo">
+                            <img src="images/cloud.jpg" class="swiper-slide camera-photo">
+                            <img src="images/car.jpg" class="swiper-slide camera-photo">
+                            <img src="images/building.jpg" class="swiper-slide camera-photo">
+                            <img src="images/bottomview.jpg" class="swiper-slide camera-photo">
+                            <img src="images/sunglasses.jpg" class="swiper-slide camera-photo">
+                            <img src="images/trees.jpg" class="swiper-slide camera-photo">
+                            <img src="images/sunset.jpg" class="swiper-slide camera-photo">
+                        </div>
+                    </div>
+                </div>
 
-        window.addEventListener('resize', () => {
-            let vh = window.innerHeight * 0.01;
-            document.documentElement.style.setProperty('--vh', `${vh}px`);
-        });
-/*
-        $(document).ready(function () {
-            $('.submit').click(function (event) {
-                
-                console.log('Clicked Button')
+            </div>
 
-                var email = $('.email').val()
-                var subject = $('.subject').val()
-                var message = $('.message').val()
-                var statusElm = $('.status')
-                statusElm.empty()
+            <div class="page__section photos-screen-modal">
+                <div id="modal" class="swiper-container">
+                    <span class="modal-close">&times;</span>
 
-                if(email.length > 5 && email.includes('@') && email.includes('.')) {
-                    statusElm.append('<div>Email is valid</div>')
-                } else {
-                    event.preventDefault()
-                    statusElm.append('<div>Email is not valid</div>')
-                }
+                    <div class="modal-content swiper-wrapper">
+                        <img src="images/mtnhouse.jpg" class="swiper-slide modal-photo">
+                        <img src="images/statue.jpg" class="swiper-slide modal-photo">
+                        <img src="images/lake.jpg" class="swiper-slide camera-photo">
+                        <img src="images/cloud.jpg" class="swiper-slide camera-photo">
+                        <img src="images/car.jpg" class="swiper-slide camera-photo">
+                        <img src="images/building.jpg" class="swiper-slide camera-photo">
+                        <img src="images/bottomview.jpg" class="swiper-slide camera-photo">
+                        <img src="images/sunglasses.jpg" class="swiper-slide camera-photo">
+                        <img src="images/trees.jpg" class="swiper-slide camera-photo">
+                        <img src="images/sunset.jpg" class="swiper-slide camera-photo">
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                if(subject.length >= 2) {
-                    statusElm.append('<div>Subject is valid</div>')
-                } else {
-                    event.preventDefault()
-                    statusElm.append('<div>Subject is not valid</div>')
-                }
+        <div class="page">
+            <figure class="planet-container container-jupiter">
+                <figcaption class="planet-info info-jupiter" data-planet-array="2">
+                    <h3 class="planet-title">Jupiter</h3>
+                    
+                    <span class="planet-info-close">&times;</span>
 
-                if(message.length >= 10) {
-                    statusElm.append('<div>Message is valid</div>')
-                } else {
-                    event.preventDefault()
-                    statusElm.append('<div>Message is not valid</div>')
-                }
-                
-            })
-        })
-*/
+                    <ul class="planet-list">
+                        <li data-planet="semimajorAxis">km</li>
+                        <li data-planet="meanRadius">km</li>
+                        <li data-planet="density">g/cm<sup>3</sup></li>
+                        <li data-planet="gravity">N</li>
+                    </ul>
+                </figcaption>
 
-
-        
+                <img class="planet jupiter" src="images/jupiter.png"  width="518px" height="517px" />
+            </figure>
             
+            <figure class="planet-container container-saturn">
+                <figcaption class="planet-info info-saturn" data-planet-array="5">
+                    <h3 class="planet-title">Saturn </h3>
+                    
+                    <span class="planet-info-close">&times;</span>
 
+                    <ul class="planet-list">
+                        <li data-planet="semimajorAxis">km</li>
+                        <li data-planet="meanRadius">km</li>
+                        <li data-planet="density">g/cm<sup>3</sup></li>
+                        <li data-planet="gravity">N</li>
+                    </ul>
+                </figcaption>
+
+                <img class="planet saturn" src="images/saturn.png"  width="508px" height="377px" />
+            </figure>
+
+            <figure class="planet-container container-uranus">
+                <img class="planet uranus" src="images/uranus.png"  width="646px" height="634px" />
+                
+                <figcaption class="planet-info info-uranus" data-planet-array="0">
+                    <h3 class="planet-title">Uranus</h3>
+                    
+                    <span class="planet-info-close">&times;</span>
+
+                    <ul class="planet-list">
+                        <li data-planet="semimajorAxis">km</li>
+                        <li data-planet="meanRadius">km</li>
+                        <li data-planet="density">g/cm<sup>3</sup></li>
+                        <li data-planet="gravity">N</li>
+                    </ul>
+                </figcaption>
+                
+            </figure>
+
+            <figure class="planet-container container-neptune">
+                <img class="planet neptune" src="images/neptune.png"  width="588px" height="583px" />
+
+                <figcaption class="planet-info info-neptune" data-planet-array="1">
+                    <h3 class="planet-title">Titleadsbhdashdjhsak <span class="planet-close">&times;</span></h3>
+                    
+                    <span class="planet-info-close">&times;</span>
+
+                    <ul class="planet-list">
+                        <li data-planet="semimajorAxis">km</li>
+                        <li data-planet="meanRadius">km</li>
+                        <li data-planet="density">g/cm<sup>3</sup></li>
+                        <li data-planet="gravity">N</li>
+                    </ul>
+                </figcaption>
+            </figure>
+        </div>
+
+        <div class="page"></div>
+
+        <div class="page"></div>
+    </section>
+
+    <section class="scroll section section--second">
+        <div class="page">
+            <figure class="page__section home-screen-main">
+                <img id="head-shot" src="images/suit.jpg" alt="Photo of Alex">
+            </figure>
+        </div>
+
+        <div class="page"></div>
+
+        <div class="page">
+            <img class="sun" src="images/sun.png"  width="1569px" height="1506px" />  
+        </div>
+
+        <div class="page">
+            <header class="page__section photos-projects-top">
+                <h1 class="center-transform photos-projects-title" >Projects</h1>
+            </header>
+        </div>
+
+        <div class="page">
+            <form id="contact" action="https://formspree.io/alexandru.dumitru94.portfolio@gmail.com" method="POST">
+                <h3 class="form-header">
+                    You can use this form to contact me regarding full-time and freelance working opportunities.
+                    <br>
+                    I also highly appreciate feedback.
+                </h3>
+                
+                <ul class="form-list">
+                    <li class="half-input">
+                        <input type="text" name="name" class="name" placeholder="Name" autocomplete="off"/>
+                    </li>
+        
+                    <li class="half-input">
+                        <input type="email" name="email" class="name" placeholder="E-mail" autocomplete="off"/>
+                    </li>
+        
+                    <li class="full-input">
+                        <input type="text" name="subject" class="subject" placeholder="Subject" autocomplete="off"/>
+                    </li>
+                        
+                    <li class="full-input">
+                        <textarea class="message" name="message" placeholder="Message" rows="4" autocomplete="off"></textarea>
+                    </li>
+                </ul>
+        
+                <button type="submit" class="submit">Send</button>
+            </form>
+
+            <div id="icons-container">
+                <a href="https://github.com/AlexandruDumitru94" target="_blank" title="GitHub">
+                    <i class="contact-icons fab fa-github-square"></i>
+                </a>
+
+                <a href="https://www.linkedin.com/in/alexandrudumitru94/" target="_blank" title="LinkedIn">
+                    <i class="contact-icons fab fa-linkedin"></i>
+                </a>
+
+                <a href="images/Alexandru_Dumitru_CV.pdf" target="_blank" title="Resume">
+                    <i class="contact-icons far fa-address-card"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="scroll section section--third">
+        <div class="page">
+            <header class="page__section home-screen-top">
+                <h1 class="center-transform" id="greeting">
+                    <span class="greeting__text" id="gt-one">Hello!</span><br>
+                    <span class="greeting__text" id="gt-two">I'm Alex.</span><br>
+                    <span class="greeting__text" id="gt-three">Front-end developer.</span>
+                </h1>
+            </header>
+        </div> 
+
+        <div class="page">
+            <header class="page__section photos-projects-top">
+                <h1 class="center-transform photos-projects-title" id="photos-text">
+                    Here are some photos.
+                </h1>
+            </header>
+        </div>
+
+        <div class="page">
+            <figure class="planet-container container-mercury">
+                <figcaption class="planet-info info-mercury" data-planet-array="4">
+                    <h3 class="planet-title">Mercury <span class="planet-close">&times;</span></h3>
+                    
+                    <span class="planet-info-close">&times;</span>
+
+                    <ul class="planet-list">
+                        <li data-planet="semimajorAxis">km</li>
+                        <li data-planet="meanRadius">km</li>
+                        <li data-planet="density">g/cm<sup>3</sup></li>
+                        <li data-planet="gravity">N</li>
+                    </ul>
+                </figcaption>
+
+                <img class="planet mercury" src="images/mercury.png"  width="1745px" height="1745px" />
+            </figure>
+
+            <figure class="planet-container container-venus">
+                <figcaption class="planet-info info-venus" data-planet-array="7">
+                    <h3 class="planet-title">Venus </h3>
+
+                    <span class="planet-info-close">&times;</span>
+                    
+                    <ul class="planet-list">
+                        <li data-planet="semimajorAxis">km</li>
+                        <li data-planet="meanRadius">km</li>
+                        <li data-planet="density">g/cm<sup>3</sup></li>
+                        <li data-planet="gravity">N</li>
+                    </ul>
+                </figcaption>
+
+                <img class="planet venus" src="images/venus.png"  width="429px" height="438px" />
+            </figure>
+        </div>
+
+        <div class="page">
+            <figure class="page__section photos-projects-main">
+                <img class="camera-wip" src="images/wip.jpg" alt="Work in Progress"
+                width="4134" height="2749">
+            </figure>
+        </div>
+
+        <div class="page">
+            <h1 id="final-words">
+                I enjoy turning ideas into reality. Tell me yours.
+            </h1>
+        </div>
+    </section>
+    
+    <section class="scroll section section--fourth">
+        <div class="page" id="home-screen-front"></div>
+
+        <div class="page">
+            <img class="outer-sparkle" id="sparkle-one" src="images/sparkle.png" />
+            <img class="outer-sparkle" id="sparkle-two" src="images/sparkle.png" />
+            <img class="outer-sparkle" id="sparkle-three" src="images/sparkle.png" />
+            <img class="outer-sparkle" id="sparkle-four" src="images/sparkle.png" />
+            <img class="inner-sparkle" id="sparkle-five" src="images/sparkle.png" />
+            <img class="inner-sparkle" id="sparkle-six" src="images/sparkle.png" />
+        </div>
+
+        <div class="page">
+            <figure class="planet-container container-earth">
+                <figcaption class="planet-info info-earth" data-planet-array="6">
+                    <h3 class="planet-title">Venus </h3> 
+
+                    <span class="planet-info-close">&times;</span>
+                    
+                    <ul class="planet-list">
+                        <li data-planet="semimajorAxis">km</li>
+                        <li data-planet="meanRadius">km</li>
+                        <li data-planet="density">g/cm<sup>3</sup></li>
+                        <li data-planet="gravity">N</li>
+                    </ul>
+                </figcaption>
+
+                <img class="planet earth" src="images/earth.png"  width="620px" height="614px" />
+                
+            </figure>
+
+            <img class="planet moon" src="images/moon.png"  width="1753px" height="1749px" />
+
+            <figure class="planet-container container-mars">
+                <figcaption class="planet-info info-mars" data-planet-array="3">
+                    <h3 class="planet-title">Venus </h3>
+
+                    <span class="planet-info-close">&times;</span> 
+                    
+                    <ul class="planet-list">
+                        <li data-planet="semimajorAxis">km</li>
+                        <li data-planet="meanRadius">km</li>
+                        <li data-planet="density">g/cm<sup>3</sup></li>
+                        <li data-planet="gravity">N</li>
+                    </ul>
+                </figcaption>
+
+                <img class="planet mars" src="images/mars.png"  width="600px" height="615px" />
+            </figure>
+        </div>
+
+        <div class="page"></div>
+
+        <div class="page"></div>
+    </section>
+
+    
+    <footer class="main-footer">
+        <button class="nav" onclick="scrollToPage(0)">Home</button>
+        <button class="nav" onclick="scrollToPage(1)">Photos</button>
+        <button class="nav" onclick="scrollToPage(2)">Planets</button>
+        <button class="nav" onclick="scrollToPage(3)">Projects</button>
+        <button class="nav" onclick="scrollToPage(4)">Contact</button>
+    </footer>
+
+    <div class="info-container">
+        <div class="info" >
+            <h4 class="info-title">You can:</h4>
+
+            <span class="planet-info-close">&times;</span> 
+
+            <ul class="info-list">
+                <li class="info-item">Use the bottom Navigation to see the rest</li>
+                <li class="info-item">Swipe through the pictures or click them to open the Gallery @ "Photos"</li>
+                <li class="info-item">Click on the planets to see some of their information @ "Planets"</li>
+            </ul>
+        </div>
+
+        <span class="button-info fa-stack fa-sm">
+            <i class="fas fa-circle-notch fa-stack-2x"></i>
+            <i class="fas fa-info fa-stack-1x"></i>
+        </span>
+    </div>
+        
+
+    
+    <script>
+        
+var galleryContainer, modal, bodyWidth, screenWidth, screenHeight, quarterSizeDif, maxScroll, body, 
+htmlElement, htmlOverflow, navButtons, deleteStopScroll, finalWords, finalHeight, contact, contactHeight, 
+endTimeline, camera, cameraWidth, cameraHeight, cameraHeightPx, cameraWidthPx, cameraContainer, gallerySwiper, 
+modalPage,  modalContainer, span, upperCameraText, outerSparkles, innerSparkles, planets, planetsInfoClose, headShot, 
+headShotWidth, headShotHeight, welcomeText, welcomeTextLeft, startTimeline;
+
+bodyWidth = document.getElementsByClassName("section--fourth")[0].scrollWidth;
+screenWidth = document.getElementsByClassName("page")[0].scrollWidth;
+screenHeight = document.getElementsByClassName("page")[0].scrollHeight;
+quarterSizeDif = (screenWidth - screenHeight) / 4;
+
+maxScroll =  (quarterSizeDif + (bodyWidth - screenWidth) / 4) * 4;
+
+body = document.getElementsByTagName("body")[0];
+htmlElement = document.getElementsByTagName("html")[0];
+htmlOverflow = window.getComputedStyle(htmlElement).getPropertyValue("overflow");
+navButtons = document.getElementsByClassName("nav");
+
+finalWords = document.getElementById("final-words");
+finalHeight = window.getComputedStyle(finalWords).getPropertyValue("bottom");
+contact = document.getElementById("contact");
+contactHeight = window.getComputedStyle(contact).getPropertyValue("height");
+
+camera = document.getElementsByClassName("camera-wip")[0];
+
+cameraContainer = document.getElementsByClassName("camera-container")[0];
+modal = document.getElementById("modal");
+
+galleryContainer = document.getElementsByClassName("swiper-container")[0];
+
+modalPage = document.getElementsByClassName("photos-screen-modal")[0];
+modalContainer = document.getElementsByClassName("swiper-container")[1];
+span = document.getElementsByClassName("modal-close")[0];
+upperCameraText = document.getElementById("photos-text");
+outerSparkles = document.getElementsByClassName("outer-sparkle");
+innerSparkles = document.getElementsByClassName("inner-sparkle");
+
+headShot = document.getElementById("head-shot");
+headShotWidth = window.getComputedStyle(headShot).getPropertyValue("width");
+headShotHeight = window.getComputedStyle(headShot).getPropertyValue("height");
+welcomeText = document.getElementById("welcome");
+welcomeTextLeft = window.getComputedStyle(welcomeText).getPropertyValue("left");
+
+let vh = window.innerHeight * 0.01;
+document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+window.addEventListener('resize', () => {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+});
+
+$(function() {
+    $.jInvertScroll([ '.scroll' ], 
+    {
+         // height: 6000,                   // optional: define the height the user can scroll, otherwise the overall length will be taken as scrollable height
+         onScroll: function(percent) {   //optional: callback function that will be called when the user scrolls down, useful for animating other things on the page
+             console.log(percent);
+         }
+     });
+});
+
+function scrollToPage(pageNumber) {
+    var pageScroll = 0;
+    if  (pageNumber > 0) {
+        pageScroll += (quarterSizeDif + (bodyWidth - screenWidth) / 4) * pageNumber;
+    }
+    window.scrollTo(0, pageScroll);
+}
+
+ function stopScroll()  {
+        if(pageYOffset > (maxScroll - 1) && !deleteStopScroll) {
+            contact.style.overflow = "hidden";
+            htmlElement.style.overflow = "hidden";
+            for(let i = 0; i < navButtons.length; i++) {
+                let button = navButtons[i];
+                button.style.pointerEvents = "none";
+            }
+
+            endTimeline = gsap.timeline({onComplete: timelineEnd});
+
+            endTimeline.set("#final-words", {bottom: "50%", yPercent: 50,  opacity: 0, display: "none"});
+            endTimeline.to("#final-words", {opacity: 1, display: "block", duration: 2});
+            endTimeline.fromTo("#final-words", {bottom: "50%", yPercent: 50, display: "block",  opacity: 1}, {bottom: finalHeight, yPercent: 0, duration: 1});
+            endTimeline.fromTo("#contact", {display: "none", height: 0, padding: 0, opacity: 0}, {display: "block", height: contactHeight, padding: 10, opacity: 1, duration: 1}, 2);
+            endTimeline.fromTo("#icons-container", {display: "none", height: 0, opacity: 0}, {display: "flex", height: "auto", opacity: 1, duration: 1}, 2);
+            endTimeline.fromTo(".contact-icons", {display: "none", fontSize: 0, opacity: 0}, {display: "inline-block", fontSize: "2em", opacity: 1, duration: 1}, 2);
+             
+            function timelineEnd() {
+                contact.style.overflow = "auto";
+                htmlElement.style.overflow = htmlOverflow;
+                for(let i = 0; i < navButtons.length; i++) {
+                    let button = navButtons[i];
+                    button.style.pointerEvents = "all";
+                }
+                deleteStopScroll = true;
+            }
+        } 
+ };
+
+ function galleryDimensions() {
+        cameraWidth = camera.clientWidth;
+        cameraHeight = camera.clientHeight;
+        cameraHeightPx = cameraHeight + "px";
+        cameraWidthPx = cameraWidth + "px";
+
+        cameraContainer.style.height = cameraHeightPx;
+        cameraContainer.style.width = cameraWidthPx;
+        
+        modal.style.height = cameraHeightPx;
+        modal.style.width = cameraWidthPx;
+        
+        gallerySwiper = new Swiper(galleryContainer, {
+            touchReleaseOnEdges: true
+        });
+    }
+
+if(window.readyState == 'loading') {
+    window.addEventListener('DOMContentLoaded', ready)
+} else {
+    ready()
+}
+ 
+function ready() {
+    
+    galleryDimensions();
+
+    (function () {
+        span.onclick = function() {
+            modalPage.style.display = "none";
+            galleryContainer.style.opacity = "1";
+            upperCameraText.style.color =  "rgba(255, 255, 255, 1)";
+            upperCameraText.style.zIndex = "1";
+            galleryContainer.style.pointerEvents = "auto";
+            camera.style.opacity = "1";
+            for(let i = 0; i < innerSparkles.length; i++) {
+                    let sparkle = innerSparkles[i];
+                    sparkle.style.display = "block";
+                }
+
+            for(let j = 0; j < outerSparkles.length; j++) {
+                let sparkle = outerSparkles[j];
+                sparkle.style.opacity = "1";
+            }
+        }
+
+        galleryContainer.addEventListener('click', addModalSwiper);
+                
+            function addModalSwiper() {
+                modalPage.style.display = "flex";
+                galleryContainer.style.opacity = "0.3";
+                upperCameraText.style.color =  "rgba(255, 255, 255, 0.3)";
+                upperCameraText.style.zIndex = "0";
+                galleryContainer.style.pointerEvents = "none";
+                camera.style.opacity = "0.5";
+
+                for(let i = 0; i < innerSparkles.length; i++) {
+                    let sparkle = innerSparkles[i];
+                    sparkle.style.display = "none";
+                }
+
+                for(let j = 0; j < outerSparkles.length; j++) {
+                    let sparkle = outerSparkles[j];
+                    sparkle.style.opacity = "0.3";
+                }
+
+                var modalSwiper = new Swiper(modalContainer, { 
+                    touchReleaseOnEdges: true
+                });
+            }
+    })();
+        
+    (function () {
+        planets = document.getElementsByClassName("planet");
+        for(let i = 0; i < planets.length; i++) {
+            var planet = planets[i];
+            planet.addEventListener('click', showInfo)
+        }
+
+        function showInfo(evt) {
+            var planet = evt.target;
+            if(planet.previousElementSibling == undefined) {
+                var planetInfo = planet.nextElementSibling;
+            } else {
+                var planetInfo = planet.previousElementSibling;
+            }
+            planetInfo.style.visibility = "visible";
+        }   
+
+        planetsInfoClose = document.getElementsByClassName("planet-info-close");
+        for(var i = 0; i < planetsInfoClose.length; i++) {
+            var closeButton = planetsInfoClose[i];
+            closeButton.addEventListener('click', hideInfo)
+        }
+
+        function hideInfo(evt) {
+            evt.target.parentElement.style.visibility = "hidden";
+        }  
+
+        fetch("https://api.le-systeme-solaire.net/rest/bodies?data=id,englishName,semimajorAxis,isPlanet,meanRadius,density,gravity&filter[]=isPlanet,neq,true&filter[]=meanRadius,gt,1190")
+                .then( (response) => response.json())
+                .then( (data) => fetchData(data))
+
+            function fetchData(data) {
+                var planetContainers = document.getElementsByClassName("planet-info");
+                for(let i = 0; i < planetContainers.length; i++) {
+                    var planet = planetContainers[i];
+                    var planetIndex = planet.getAttribute("data-planet-array");
+                    
+                    planet.firstElementChild.innerHTML = data.bodies[planetIndex].englishName;
+
+                    var planetListInfo = planet.getElementsByClassName("planet-list")[0].children;
+                    
+                    for(let j = 0; j < planetListInfo.length; j++) {
+                        var listElement = planetListInfo[j];
+                        var planetAxis = listElement.getAttribute("data-planet");
+                        var listUnit = listElement.innerHTML;
+                        
+                        listElement.innerHTML = `${planetAxis}` + " = " + data.bodies[planetIndex][planetAxis] + " " + listUnit;
+                    }
+                }
+            }
+
+        document.getElementsByClassName("button-info")[0].addEventListener('click', evt => {
+            evt.target.parentElement.previousElementSibling.style.visibility = "visible";
+        });
+
+        startTimeline = gsap.timeline({defaults: {duration: 1}});
+
+        startTimeline.fromTo(".greeting__text", {opacity: 0, top: "-=100", visibility: "hidden"}, {opacity: 1, top: 0, visibility: "visible", stagger: 1});
+        startTimeline.fromTo("#head-shot", {width: 0, height: 0, visibility: "hidden"}, {width: headShotWidth, height: headShotHeight, visibility: "visible"}, 3.5);
+        startTimeline.fromTo("#welcome", {opacity: 0, left: "-50%", visibility: "hidden"}, {opacity: 1, left: welcomeTextLeft, visibility: "visible"}, "-=1");
+
+    })();
+}
 
     </script>
 
