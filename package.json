@@ -12,5 +12,13 @@
     "swiper": "^6.3.2"
   },
   "devDependencies": {},
-  "description": ""
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexandruDumitru94/Test.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AlexandruDumitru94/Test/issues"
+  },
+  "homepage": "https://github.com/AlexandruDumitru94/Test#readme"
 }
