@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "swiper": "^6.2.0"
+    "swiper": "^6.3.2"
   },
   "devDependencies": {},
   "description": ""
