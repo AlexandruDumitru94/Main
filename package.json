@@ -1,24 +1,23 @@
 {
-  "name": "test",
+  "name": "Main",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "swiper": "^6.3.2"
-  },
-  "devDependencies": {},
-  "description": "",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AlexandruDumitru94/Test.git"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/AlexandruDumitru94/Test/issues"
   },
-  "homepage": "https://github.com/AlexandruDumitru94/Test#readme"
+  "homepage": "https://github.com/AlexandruDumitru94/Test#readme",
+  "dependencies": {
+    "swiper": "^6.3.2"
+  }
 }
