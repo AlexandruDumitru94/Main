@@ -66,7 +66,7 @@
 
         .page {
             height: 100%;
-            width: 100vh;
+            width: 100vw;
             position: relative;
         }
             .page__section {
@@ -891,7 +891,7 @@
 
         <div class="page">
             <div class="page__section photos-projects-main">
-                <img class="camera-wip" src="images/camera2.png" alt="Photo Camera" 
+                <img class="camera-wip" src="images/camera.png" alt="Photo Camera" 
                     width="3145" height="4318">
 
                 <div class="camera-container">
@@ -948,7 +948,7 @@
                     </ul>
                 </figcaption>
 
-                <img class="planet jupiter" src="images/jupiter.png"  width="518px" height="517px" />
+                <img class="planet jupiter" src="images/planets/jupiter.png"  width="518px" height="517px" />
             </figure>
             
             <figure class="planet-container container-saturn">
@@ -965,11 +965,11 @@
                     </ul>
                 </figcaption>
 
-                <img class="planet saturn" src="images/saturn.png"  width="508px" height="377px" />
+                <img class="planet saturn" src="images/planets/saturn.png"  width="508px" height="377px" />
             </figure>
 
             <figure class="planet-container container-uranus">
-                <img class="planet uranus" src="images/uranus.png"  width="646px" height="634px" />
+                <img class="planet uranus" src="images/planets/uranus.png"  width="646px" height="634px" />
                 
                 <figcaption class="planet-info info-uranus" data-planet-array="0">
                     <h3 class="planet-title">Uranus</h3>
@@ -987,7 +987,7 @@
             </figure>
 
             <figure class="planet-container container-neptune">
-                <img class="planet neptune" src="images/neptune.png"  width="588px" height="583px" />
+                <img class="planet neptune" src="images/planets/neptune.png"  width="588px" height="583px" />
 
                 <figcaption class="planet-info info-neptune" data-planet-array="1">
                     <h3 class="planet-title">Titleadsbhdashdjhsak <span class="planet-close">&times;</span></h3>
@@ -1019,7 +1019,7 @@
         <div class="page"></div>
 
         <div class="page">
-            <img class="sun" src="images/sun.png"  width="1569px" height="1506px" />  
+            <img class="sun" src="images/planets/sun.png"  width="1569px" height="1506px" />  
         </div>
 
         <div class="page">
@@ -1107,7 +1107,7 @@
                     </ul>
                 </figcaption>
 
-                <img class="planet mercury" src="images/mercury.png"  width="1745px" height="1745px" />
+                <img class="planet mercury" src="images/planets/mercury.png"  width="1745px" height="1745px" />
             </figure>
 
             <figure class="planet-container container-venus">
@@ -1124,7 +1124,7 @@
                     </ul>
                 </figcaption>
 
-                <img class="planet venus" src="images/venus.png"  width="429px" height="438px" />
+                <img class="planet venus" src="images/planets/venus.png"  width="429px" height="438px" />
             </figure>
         </div>
 
@@ -1169,11 +1169,11 @@
                     </ul>
                 </figcaption>
 
-                <img class="planet earth" src="images/earth.png"  width="620px" height="614px" />
+                <img class="planet earth" src="images/planets/earth.png"  width="620px" height="614px" />
                 
             </figure>
 
-            <img class="planet moon" src="images/moon.png"  width="1753px" height="1749px" />
+            <img class="planet moon" src="images/planets/moon.png"  width="1753px" height="1749px" />
 
             <figure class="planet-container container-mars">
                 <figcaption class="planet-info info-mars" data-planet-array="3">
@@ -1189,7 +1189,7 @@
                     </ul>
                 </figcaption>
 
-                <img class="planet mars" src="images/mars.png"  width="600px" height="615px" />
+                <img class="planet mars" src="images/planets/mars.png"  width="600px" height="615px" />
             </figure>
         </div>
 
@@ -1287,13 +1287,13 @@ window.addEventListener('resize', () => {
     document.documentElement.style.setProperty('--vh', `${vh}px`);
 });
 
-let vw = window.innerWidth * 0.01;
+/*let vw = window.innerWidth * 0.01;
 document.documentElement.style.setProperty('--vw', `${vw}px`);
 
 window.addEventListener('resize', () => {
     let vw = window.innerWidth * 0.01;
     document.documentElement.style.setProperty('--vw', `${vw}px`);
-});
+});*/
 
 
 $(function() {
